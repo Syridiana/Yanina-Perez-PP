@@ -91,9 +91,14 @@ export class DBService {
     }
   } */
 
-  loadAllActores() {
-    return this.actoresCollection.valueChanges() as Observable<ActorI[]>
+  loadAllProductos() {
+    return this.productosCollection.valueChanges() as Observable<ProductoI[]>
   }
+
+  loadAllActores() {
+    return this.productosCollection.valueChanges() as Observable<ProductoI[]>
+  }
+
 
   async addActor(actorId: string, nombre: string, apellido:string, nacionalidad:string, edad: string) {
     try {
@@ -116,9 +121,9 @@ export class DBService {
       const actor: ProductoI = {
         codigo: actorId,
         descripcion: nombre,
-        pais: apellido,
+        pais: edad,
         stock: nacionalidad,
-        precio: edad,
+        precio: apellido,
         comestible: somestible
       };
 

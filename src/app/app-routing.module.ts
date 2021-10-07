@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'ingreso', component: LoginComponent },
   { path: '', redirectTo: 'bievenido', pathMatch: 'full' },
   { path: 'bievenido', component: BienvenidoComponent },
+  { path: 'detalle', component: BusquedaComponent },
   { path: 'altaproducto', component: ActorAltaComponent },
   { path: 'peliculas', loadChildren: () => import('./componentes/peliculas/peliculas.module').then(m => m.PeliculasModule) },
   { path: 'actor', loadChildren: () => import('./componentes/actor/actor.module').then(m => m.ActorModule) }

@@ -2,6 +2,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { PeliculaI } from 'src/app/clases/PeliculaI';
 import { APIService } from '../../servicios/apiservice.service';
 import { PeliSeleccionadaService } from 'src/app/servicios/peli-seleccionada.service';
+import { DBService } from 'src/app/servicios/db.service';
+import { ProductoI } from 'src/app/clases/ProductoI';
 
 @Component({
   selector: 'app-tabla-pelicula',
@@ -24,11 +26,12 @@ export class TablaPeliculaComponent implements OnInit {
 
 
   movieListId = new Array<PeliculaI>();
+  productoLista = new Array<ProductoI>();
 
   imageUrl = '';
   movieName = "";
 
-  constructor(private datosApi: APIService, private peliSeleccionada: PeliSeleccionadaService) {
+  constructor(private datosApi: APIService, private peliSeleccionada: PeliSeleccionadaService, private DBService: DBService) {
 
     this.loadMovie(782);
     this.loadMovie(680);
@@ -38,6 +41,11 @@ export class TablaPeliculaComponent implements OnInit {
     this.obtenerLista(493922);
     this.movieListId.push(this.firstMovie);
     this.pickedMovie = peliSeleccionada;
+    
+    this.DBService.loadAllProductos().subscribe((res:any) =>{
+      this.productoLista = res;
+    }
+    );
    }
 
 
@@ -68,7 +76,7 @@ export class TablaPeliculaComponent implements OnInit {
                   peliActual.tipo = 'Otros';
                 }
                */
-              peliActual.tipo = pelicula.genres[0].name;
+             /*  peliActual.tipo = pelicula.genres[0].name; */
               peliActual.photoURL = 'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/' + pelicula.backdrop_path;
               this.movieListId.push(peliActual);
 
@@ -104,7 +112,7 @@ export class TablaPeliculaComponent implements OnInit {
   }
 
   seleccionoPeli(movieId:any){
-    this.pickedMovie = this.movieListId.find(movie => movie.id === movieId);
+    this.pickedMovie = this.productoLista.find(movie => movie.codigo === movieId);
     this.eventoSeleccionePeli.emit(this.pickedMovie);
   }
 
