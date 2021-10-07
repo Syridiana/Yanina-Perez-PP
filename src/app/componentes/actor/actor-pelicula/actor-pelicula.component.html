@@ -1,0 +1,50 @@
+<main>
+
+    <section class="py-5 text-center container">
+      <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="fw-light">Listado Actores</h1>
+        </div>
+      </div>
+    </section>
+  
+    <div class="album py-5 bg-light">
+      <div class="container">
+  
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          <div class="col movieCard"  *ngFor="let actor of listaActores">
+            <div class="card shadow-sm">
+                <h2 class="nombre">{{actor.nombre}} {{actor.apellido}}</h2>
+                <h3>{{actor.edad}}</h3>
+                <h4>{{actor.nacionalidad}}</h4>
+            </div>
+            <div id="clickTarget" (click)="seleccionActor(actor.id)"></div>
+          </div>
+  
+
+        </div>
+      </div>
+    </div>
+    <div class="album py-5 bg-light">
+        <div class="container">
+    
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="col movieCard">
+                <h2 class="nombre">Peliculas: </h2>
+              <div class="card shadow-sm" *ngFor='let peli of actorSeleccionadoLista'>
+                 <h3>{{actorSeleccionadoLista.nombre}}</h3>
+              </div>
+            </div>
+    
+  
+          </div>
+        </div>
+      </div>
+  </main>
+
+  
+  
+      <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+  
+  
+  

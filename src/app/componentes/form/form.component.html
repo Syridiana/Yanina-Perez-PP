@@ -148,7 +148,7 @@
 
           <hr class="my-4"> -->
 
-          <button class="w-100 btn btn-primary btn-lg" type="submit" *ngIf="inAltaActor" (click)="agregarActor()">Agregar Actor</button>
+          <button class="w-100 btn btn-primary btn-lg" type="submit" *ngIf="inAltaActor" (click)="agregarActor()">{{mensaje}}</button>
         </form>
       </div>
       <app-tabla-paises (emisionPais)="reciboPaisElegido($event)"></app-tabla-paises>

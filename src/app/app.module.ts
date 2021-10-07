@@ -25,6 +25,7 @@ import { DetallePeliculaComponent } from './componentes/detalle-pelicula/detalle
 import { FormComponent } from './componentes/form/form.component';
 import { TablaPaisesComponent } from './componentes/tabla-paises/tabla-paises.component';
 import { FormPeliculasComponent } from './componentes/form-peliculas/form-peliculas.component';
+import { TablaComponent } from './componentes/tabla/tabla.component';
 
 
 
@@ -45,6 +46,7 @@ import { FormPeliculasComponent } from './componentes/form-peliculas/form-pelicu
     FormComponent,
     TablaPaisesComponent,
     FormPeliculasComponent,
+    TablaComponent,
 
   ],
   imports: [

@@ -53,7 +53,7 @@ export class DBService {
     
   }
 
-  loadAllActores() {
+/*   loadAllActores() {
     return this.actoresCollection.valueChanges().pipe(
       map((actores: ActorI[]) => {
         this.listaActores = [];
@@ -65,7 +65,7 @@ export class DBService {
         return this.listaActores;
       })
     );
-  }
+  } */
 
 /*   async addPuntaje(puntaje: number) {
     try {
@@ -83,19 +83,9 @@ export class DBService {
     }
   } */
 
-/*   loadAllUsuarios() {
-    return this.usuariosCollection.valueChanges().pipe(
-      map((usuarios: UserI[]) => {
-        this.listaUsuarios = [];
-
-        for (const user of usuarios) {
-          this.listaUsuarios.unshift(user);
-        }
-
-        return this.listaUsuarios;
-      })
-    );
-  } */
+  loadAllActores() {
+    return this.actoresCollection.valueChanges() as Observable<ActorI[]>
+  }
 
   async addActor(actorId: string, nombre: string, apellido:string, nacionalidad:string, edad: string) {
     try {
@@ -122,7 +112,8 @@ export class DBService {
         fechaEstreno: fechaEstreno,
         cantPublico: cantPublico,
         photoURL: photoURL,
-        actor: actor
+        actor: actor, 
+        actorId: actor.id
       };
       return await this.peliculasCollection.add(peli);
     } catch (error:any) {
@@ -169,6 +160,23 @@ export class DBService {
       throw new Error(error.message);
     }
   }
+
+
+  async findMovies(actorId: string) {
+    try {
+        console.log(actorId)
+        const docs = this.afs.collection<PeliculaI>(
+          this.nameCollectionDB_2).ref.where('actorId', '==', actorId).get();
+          (await docs).forEach((doc:any)=>{
+            console.log(doc.data());
+          });
+
+    } catch (error:any) {
+      throw new Error(error.message);
+    }
+  }
+
+  
 
   
 

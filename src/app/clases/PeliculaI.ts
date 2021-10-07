@@ -8,6 +8,7 @@ export interface PeliculaI {
     cantPublico: string | null | undefined;
     photoURL?: string | null | undefined;
     actor?: ActorI | null | undefined;
+    actorId?: string | null | undefined;
   }
 
   

@@ -14,6 +14,7 @@ import {
 })
 export class FormComponent implements OnInit {
   @Input() inAltaActor:boolean;
+  @Input() mensaje:string;
   @Output() actorCargado: EventEmitter<any> =  new EventEmitter<any>();
   
 
@@ -22,9 +23,11 @@ export class FormComponent implements OnInit {
   public apellido ="";
   public edad="";
   public actorId="";
+  
 
   constructor(private dbService: DBService, private afs: AngularFirestore) {
     this.inAltaActor = true;
+    this.mensaje = "Agregar Actor";
    }
 
   reciboPaisElegido($event:any){
