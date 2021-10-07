@@ -1,1 +1,174 @@
-<app-form></app-form>
+<div class="container" *ngIf="currentUser">
+    <main>
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+        <h2>Alta productos</h2>
+        
+      </div>
+  
+      <form [formGroup]="formulario" (ngSubmit)="aceptarForm()"><!-- [formGroup]="formulario" -->
+      <div class="row g-5">
+
+        <div class="col-md-7 col-lg-8">
+
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <label for="codigo" class="form-label">Codigo</label>
+                <input type="text" class="form-control" id="codigo" placeholder="" value=""
+                formControlName="codigo" required>
+                <div class="invalid-feedback" class="form-text" *ngIf="formulario.get('codigo')?.hasError('required') &&
+                formulario.get('codigo')?.touched">
+                  Codigo is required.
+                </div>
+                <br>
+              </div>
+  
+              <div class="col-sm-6">
+                <label for="descripcion" class="form-label">Descripcion</label>
+                <input type="text" class="form-control" id="descripcion" placeholder="" value=""
+                formControlName="descripcion" required><br>
+                <div class="invalid-feedback" class="form-text" *ngIf="formulario.get('descripcion')?.hasError('required')&&
+                formulario.get('codigo')?.touched">
+                    Descripcion is required.
+                  </div>
+                  <br>
+              </div>
+  
+              <div class="col-12">
+                <label for="pais" class="form-label">Pais de origen</label>
+                <div class="input-group has-validation">
+                  <input  type="text" class="form-control" id="pais" placeholder="pais"
+                  formControlName="paisOrigen"  [(ngModel)]="pais"  required><br>
+                  <div class="invalid-feedback" class="form-text" *ngIf="formulario.get('paisOrigen')?.hasError('required')&&
+                  formulario.get('codigo')?.touched">
+                    Pais de origen is required.
+                  </div><br>
+                </div>
+              </div>
+  
+              <div class="col-12">
+                <label for="stock" class="form-label">Stock</label>
+                <div class="input-group has-validation">
+                  <input type="text" class="form-control" id="stock" placeholder="stock"
+                  formControlName="stock"  required><br>
+                  <div class="invalid-feedback" class="form-text" *ngIf="formulario.get('stock')?.hasError('required')&&
+                  formulario.get('codigo')?.touched">
+                    Stock is required.
+                  </div><br>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="precio" class="form-label">Precio</label>
+                <div class="input-group has-validation">
+                  <input type="text" class="form-control" id="precio" placeholder="precio"
+                  formControlName="precio"  required><br>
+                  <div class="invalid-feedback" class="form-text" *ngIf="formulario.get('precio')?.hasError('required')&&
+                  formulario.get('codigo')?.touched">
+                    Precio is required.
+                  </div><br>
+                </div>
+              </div>
+  
+              <div class="col-md-4">
+                <label for="state" class="form-label">Comestible</label>
+                <select class="form-select" id="state"
+                formControlName="comestible"  required>
+                  <option value="true">Si</option>
+                  <option value="false">No</option>
+                </select>
+                <div class="invalid-feedback" class="form-text" *ngIf="formulario.get('precio')?.hasError('required')&&
+                formulario.get('codigo')?.touched">
+                  Comestible is required.
+                </div><br>
+              </div>
+<!--   
+              <div class="col-md-3">
+                <label for="zip" class="form-label">Zip</label>
+                <input type="text" class="form-control" id="zip" placeholder="" required>
+                <div class="invalid-feedback">
+                  Zip code required.
+                </div>
+              </div> -->
+            </div>
+  
+<!--             <hr class="my-4">
+  
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="same-address">
+              <label class="form-check-label" for="same-address">Shipping address is the same as my billing address</label>
+            </div>
+  
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="save-info">
+              <label class="form-check-label" for="save-info">Save this information for next time</label>
+            </div>
+  
+            <hr class="my-4">
+  
+            <h4 class="mb-3">Payment</h4>
+  
+            <div class="my-3">
+              <div class="form-check">
+                <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
+                <label class="form-check-label" for="credit">Credit card</label>
+              </div>
+              <div class="form-check">
+                <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
+                <label class="form-check-label" for="debit">Debit card</label>
+              </div>
+              <div class="form-check">
+                <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
+                <label class="form-check-label" for="paypal">PayPal</label>
+              </div>
+            </div>
+  
+            <div class="row gy-3">
+              <div class="col-md-6">
+                <label for="cc-name" class="form-label">Name on card</label>
+                <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                <small class="text-muted">Full name as displayed on card</small>
+                <div class="invalid-feedback">
+                  Name on card is required
+                </div>
+              </div>
+  
+              <div class="col-md-6">
+                <label for="cc-number" class="form-label">Credit card number</label>
+                <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                <div class="invalid-feedback">
+                  Credit card number is required
+                </div>
+              </div>
+  
+              <div class="col-md-3">
+                <label for="cc-expiration" class="form-label">Expiration</label>
+                <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                <div class="invalid-feedback">
+                  Expiration date required
+                </div>
+              </div>
+  
+              <div class="col-md-3">
+                <label for="cc-cvv" class="form-label">CVV</label>
+                <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                <div class="invalid-feedback">
+                  Security code required
+                </div>
+              </div>
+            </div>
+  
+            <hr class="my-4">
+   -->    <app-tabla-paises (emisionPais)="cargarPais($event)"></app-tabla-paises>
+            <button class="w-100 btn btn-primary btn-lg" type="submit" [disabled]="formulario.invalid">Enviar formulario</button>
+
+        </div>
+      </div>
+
+    </form>
+
+    </main>
+  
+
+  </div>
+<h1 *ngIf="!currentUser">Debe estar logueado para ver esta pagina</h1>

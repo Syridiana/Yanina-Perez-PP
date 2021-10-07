@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -47,6 +47,7 @@ import { TablaComponent } from './componentes/tabla/tabla.component';
     TablaPaisesComponent,
     FormPeliculasComponent,
     TablaComponent,
+    
 
   ],
   imports: [
@@ -57,7 +58,8 @@ import { TablaComponent } from './componentes/tabla/tabla.component';
     AngularFirestoreModule,
     NgbModule,
     AngularFireDatabaseModule, 
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     AuthenticationService

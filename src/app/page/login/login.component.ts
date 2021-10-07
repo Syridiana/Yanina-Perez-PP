@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   pass = '';
   photoURL = '';
   username = "";
+  tipo = "";
 
   constructor(private routes: Router, public authService: AuthenticationService) { 
   
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   
   signUp() {
-    this.authService.SignUp(this.email, this.pass, this.username, this.photoURL);
+    this.authService.SignUp(this.email, this.pass, this.username, this.photoURL, this.tipo);
     }
     
     signIn() {

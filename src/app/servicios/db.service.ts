@@ -122,14 +122,14 @@ export class DBService {
   }
 
 
-  async addUserCollection(email: string, username:string, photoURL:string, puntaje: number) {
+  async addUserCollection(email: string, username:string, photoURL:string, tipo: string) {
     try {
       const user: UserI = {
         uid: this.currentUser?.uid,
         displayName: username,
         email: email,
         photoURL: photoURL,
-        puntaje: puntaje
+        tipo: tipo
       };
 
       return await this.usuariosCollection.add(user);

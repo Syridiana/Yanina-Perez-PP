@@ -23,6 +23,9 @@ export class ActorPeliculaComponent implements OnInit {
     /* this.eventoSeleccionePeli.emit(this.pickedMovie); */
   }
 
+  aceptarForm(){
+
+  }
   ngOnInit(): void {
   }
 

@@ -28,6 +28,12 @@
   <input type="text" id="inputUsername" class="form-control" [(ngModel)]="username" name="username" placeholder="Username">
   <label for="inputPhotoURL" class="sr-only">PhotoURL</label>
   <input type="text" id="inputPhotoURL" class="form-control" [(ngModel)]="photoURL" name="photoURL" placeholder="PhotoURL">
+  <label for="state" class="form-label">Tipo usuario</label>
+  <select class="form-select" id="state" required [(ngModel)]="tipo" name="tipo">
+    <option value="empleados">empleado</option>
+    <option value="admin">admin</option>
+      
+  </select>
   <br>
 <!--   <div class="checkbox mb-3">
     <label>

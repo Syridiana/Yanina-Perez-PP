@@ -34,12 +34,12 @@ export class AuthenticationService {
   }
 
   /* Sign up */
-  SignUp(email: string, password: string, username: string, photoURL: string) {
+  SignUp(email: string, password: string, username: string, photoURL: string, tipo:string) {
     this.angularFireAuth.createUserWithEmailAndPassword(email, password)
       .then((res: any) => {
         console.log('You are Successfully signed up!', res);
         this.email = email;
-        this.dbService.addUserCollection(email, username, photoURL, 0);
+        this.dbService.addUserCollection(email, username, photoURL, tipo);
         this.routes.navigate(['/home']);
 
         Swal.fire({
