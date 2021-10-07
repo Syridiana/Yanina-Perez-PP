@@ -14,7 +14,7 @@ export class TablaPeliculaComponent implements OnInit {
   random: any;
   pickedMovie: any;
   firstMovie: PeliculaI = {
-    id: 694,
+    id: '694',
     nombre: 'The Shining',
     tipo: 'Terror',
     fechaEstreno: '1980-12-25',
@@ -47,14 +47,14 @@ export class TablaPeliculaComponent implements OnInit {
       this.datosApi.obtenerDatos((idStart)).subscribe(
         (pelicula: any) => {
               let peliActual: PeliculaI = {
-                id: 694,
+                id: '694',
                 nombre: 'The shining',
                 tipo: 'Terror',
                 fechaEstreno: '01/01/1990',
                 cantPublico: '3.000.000',
                 photoURL: 'https://librolibertate.files.wordpress.com/2019/10/the-shining-1.jpg'
               };
-              peliActual.id = idStart;
+              peliActual.id = idStart.toString();
               peliActual.nombre = pelicula.title;
               peliActual.cantPublico = pelicula.popularity;
               peliActual.fechaEstreno = pelicula.release_date;

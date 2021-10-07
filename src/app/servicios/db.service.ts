@@ -20,27 +20,37 @@ export class DBService {
   private actoresCollection: AngularFirestoreCollection<ActorI>;
   private nameCollectionDB = 'actores';
 
+  private peliculasCollection: AngularFirestoreCollection<PeliculaI>;
+  private nameCollectionDB_2 = 'peliculas';
+
   private usuariosCollection: AngularFirestoreCollection<UserI>;
-  private nameCollectionDB_2 = 'usuarios';
+  private nameCollectionDB_3 = 'usuarios';
 
   public currentUser!: UserI | null;
   public listaPuntajes: PeliculaI[] = [];
   public listaActores: ActorI[] = [];
   public usuarioId='';
-  public actorId = 0;
+  public actorId = '';
+  public peliculaId = '';
 
   constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) {
     this.actoresCollection = afs.collection<ActorI>(
       this.nameCollectionDB
     );
 
-    this.usuariosCollection = afs.collection<UserI>(
+    this.peliculasCollection = afs.collection<PeliculaI>(
       this.nameCollectionDB_2
+    );
+
+    this.usuariosCollection = afs.collection<UserI>(
+      this.nameCollectionDB_3
     );
 
     this.afAuth.onAuthStateChanged((user) => {
       this.currentUser = user;
     });
+
+    
   }
 
   loadAllActores() {
@@ -87,17 +97,34 @@ export class DBService {
     );
   } */
 
-  async addActor(nombre: string, apellido:string, nacionalidad:string, edad: string) {
+  async addActor(actorId: string, nombre: string, apellido:string, nacionalidad:string, edad: string) {
     try {
       const actor: ActorI = {
-        id: this.actorId,
+        id: actorId,
         nombre: nombre,
         apellido: apellido,
         nacionalidad: nacionalidad,
         edad: edad
       };
-      this.actorId++;
+
       return await this.actoresCollection.add(actor);
+    } catch (error:any) {
+      throw new Error(error.message);
+    }
+  }
+
+  async addPelicula(nombre: string, tipo:string, fechaEstreno:string, cantPublico: string, photoURL:string, actor:any) {
+    try {
+      const peli: PeliculaI = {
+        id: this.afs.createId(),
+        nombre: nombre,
+        tipo: tipo,
+        fechaEstreno: fechaEstreno,
+        cantPublico: cantPublico,
+        photoURL: photoURL,
+        actor: actor
+      };
+      return await this.peliculasCollection.add(peli);
     } catch (error:any) {
       throw new Error(error.message);
     }
@@ -143,7 +170,9 @@ export class DBService {
     }
   }
 
-  public obtenerUsuarios() {
+  
+
+/*   public obtenerUsuarios() {
     return this.usuariosCollection.valueChanges() as Observable<UserI[]>;
-  }
+  } */
 }

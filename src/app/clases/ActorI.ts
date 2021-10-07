@@ -1,5 +1,5 @@
 export interface ActorI {
-    id: number | null | undefined;
+    id: string | null | undefined;
     nombre: string | null | undefined;
     apellido: string | null | undefined;
     edad: string | null | undefined;

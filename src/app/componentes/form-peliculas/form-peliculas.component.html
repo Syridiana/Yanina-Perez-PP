@@ -1,0 +1,69 @@
+<div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+        <h2>Alta Pelicula</h2>
+        <p class="lead">Ingrese datos</p>
+      </div>
+  
+      <div class="row g-5">
+  
+        <div class="col-md-7 col-lg-8">
+          <h4 class="mb-3">Datos</h4>
+          <form class="needs-validation" (ngSubmit)="onSubmit()">
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <label for="nombre" class="form-label">Titulo</label>
+                <input type="text" name="nombre" class="form-control" id="firstName" placeholder="" value="" required [(ngModel)]="titulo">
+
+              </div>
+  
+              <div class="col-sm-6">
+                <label for="estreno" class="form-label">Fecha Estreno</label>
+                <input type="text" name="estreno" class="form-control" id="lastName" placeholder="" value="" required [(ngModel)]="estreno"> 
+
+              </div>
+              <br><br><br><br>
+              <div class="col-md-4">
+                <label for="state" class="form-label">Genero</label>
+                <select class="form-select" id="state" required [(ngModel)]="tipo" name="genero">
+                  <option value="">Choose...</option>
+                  <option value="Terror">Terror</option>
+                  <option value="Comedia">Comedia</option>
+                  <option value="Amor">Amor</option>
+                  <option value="Otros">Otros</option>
+                    
+                </select>
+              </div>
+  
+
+              <br><br>
+              <div class="col-12">
+                <label for="publico" class="form-label">Cantidad de publico</label>
+                <input type="text" name="publico" class="form-control" id="edad" placeholder="" required [(ngModel)]="publico">
+              </div>
+              <br><br><br><br>
+              <div class="col-12">
+                <label for="address2" class="form-label">Foto URL<span></span></label>
+                <input type="text" name="nacionalidad" class="form-control" id="address2" 
+                placeholder="" required [(ngModel)]="url">
+              </div>
+  
+  
+              <br><br><br><br>
+ 
+            </div>
+  
+ 
+            <app-form (actorCargado)="recibirActor($event)"></app-form>
+            <br><br><br><br>
+            <button class="w-100 btn btn-primary btn-lg" type="submit" (click)="agregarPelicula()">Agregar Pelicula</button>
+            <br><br><br><br>
+          </form>
+        </div>
+
+      </div>
+    </main>
+  
+
+  </div>
