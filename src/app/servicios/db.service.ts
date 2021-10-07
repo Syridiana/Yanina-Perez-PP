@@ -11,6 +11,7 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { User } from 'firebase';
 import { ActorI } from '../clases/ActorI';
+import { ProductoI } from '../clases/ProductoI';
 
 
 @Injectable({
@@ -25,6 +26,9 @@ export class DBService {
 
   private usuariosCollection: AngularFirestoreCollection<UserI>;
   private nameCollectionDB_3 = 'usuarios';
+
+  private productosCollection: AngularFirestoreCollection<ProductoI>;
+  private nameCollection_productos = 'productos';
 
   public currentUser!: UserI | null;
   public listaPuntajes: PeliculaI[] = [];
@@ -44,6 +48,10 @@ export class DBService {
 
     this.usuariosCollection = afs.collection<UserI>(
       this.nameCollectionDB_3
+    );
+
+    this.productosCollection = afs.collection<ProductoI>(
+      this.nameCollection_productos
     );
 
     this.afAuth.onAuthStateChanged((user) => {
@@ -98,6 +106,23 @@ export class DBService {
       };
 
       return await this.actoresCollection.add(actor);
+    } catch (error:any) {
+      throw new Error(error.message);
+    }
+  }
+
+  async addProducto(actorId: string, nombre: string, apellido:string, nacionalidad:string, edad: string, somestible: boolean) {
+    try {
+      const actor: ProductoI = {
+        codigo: actorId,
+        descripcion: nombre,
+        pais: apellido,
+        stock: nacionalidad,
+        precio: edad,
+        comestible: somestible
+      };
+
+      return await this.productosCollection.add(actor);
     } catch (error:any) {
       throw new Error(error.message);
     }

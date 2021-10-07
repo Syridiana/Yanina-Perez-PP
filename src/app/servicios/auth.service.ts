@@ -40,7 +40,7 @@ export class AuthenticationService {
         console.log('You are Successfully signed up!', res);
         this.email = email;
         this.dbService.addUserCollection(email, username, photoURL, tipo);
-        this.routes.navigate(['/home']);
+        this.routes.navigate(['/']);
 
         Swal.fire({
           icon: 'success',
@@ -71,7 +71,7 @@ export class AuthenticationService {
       .then((res: any) => {
         console.log('You are in!');
         this.email = email;
-        this.routes.navigate(['/home']);
+        this.routes.navigate(['/']);
 
         Swal.fire({
           icon: 'success',

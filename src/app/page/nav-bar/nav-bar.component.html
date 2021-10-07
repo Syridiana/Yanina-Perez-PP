@@ -12,10 +12,10 @@
 	C18.3,20.3,18.7,21.2,18.1,21.7z"/>
             </svg>
         </a>
-        <a class="py-2 d-none d-md-inline-block buttonNav" routerLink="/busqueda">Busqueda</a>
+       <!--  <a class="py-2 d-none d-md-inline-block buttonNav" routerLink="/busqueda">Busqueda</a> -->
         <a class="py-2 d-none d-md-inline-block buttonNav" routerLink="/altaproducto">Alta Producto</a>
-        <a class="py-2 d-none d-md-inline-block buttonNav" routerLink="/peliculas/alta">Alta Pelicula</a>
-        <a class="py-2 d-none d-md-inline-block buttonNav" routerLink="/actor/actorpelicula">Actor Pelicula</a>
+<!--         <a class="py-2 d-none d-md-inline-block buttonNav" routerLink="/peliculas/alta">Alta Pelicula</a>
+        <a class="py-2 d-none d-md-inline-block buttonNav" routerLink="/actor/actorpelicula">Actor Pelicula</a> -->
         <a class="py-2 d-none d-md-inline-block buttonNav" *ngIf="!currentUser" routerLink="/login">Login/Signup</a>
         <a class="py-2 d-none d-md-inline-block buttonNav" id="logout" *ngIf="currentUser" (click)=signOut()>Logout</a>
         <p class="py-2 d-none d-md-inline-block buttonNav" *ngIf="currentUser">Bienvenida/o: {{userDisplayName}}</p>
