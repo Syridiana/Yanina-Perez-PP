@@ -1,0 +1,15 @@
+<app-tabla-pelicula (eventoSeleccionePeli)="cambiarPeli($event)"></app-tabla-pelicula>
+
+<div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col movieCard">
+          <div class="card shadow-sm">
+            <app-detalle-pelicula [movieRecibida] = "peliActual"></app-detalle-pelicula>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>

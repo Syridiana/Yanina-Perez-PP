@@ -1,0 +1,11 @@
+
+<div class="card-body">
+    <p class="card-text" *ngIf="movieRecibida">Titulo: {{movieRecibida.nombre}}</p>
+    <p class="card-text" *ngIf="movieRecibida">Tipo: {{movieRecibida.tipo}}</p>
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="btn-group">
+<small class="text-muted" *ngIf="movieRecibida">Estreno: {{movieRecibida.fechaEstreno}}</small>
+      </div>
+      <small class="text-muted" *ngIf="movieRecibida">Publico: {{movieRecibida.cantPublico}}</small>
+    </div>
+  </div>
