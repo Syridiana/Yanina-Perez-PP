@@ -10,25 +10,27 @@ import { PeliculaI } from '../clases/PeliculaI';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { User } from 'firebase';
+import { ActorI } from '../clases/ActorI';
 
 
 @Injectable({
   providedIn: 'root',
 })
 export class DBService {
-  private puntajesCollection: AngularFirestoreCollection<PeliculaI>;
-  private nameCollectionDB = 'puntajes';
+  private actoresCollection: AngularFirestoreCollection<ActorI>;
+  private nameCollectionDB = 'actores';
 
   private usuariosCollection: AngularFirestoreCollection<UserI>;
   private nameCollectionDB_2 = 'usuarios';
 
   public currentUser!: UserI | null;
   public listaPuntajes: PeliculaI[] = [];
-  public listaUsuarios: UserI[] = [];
+  public listaActores: ActorI[] = [];
   public usuarioId='';
+  public actorId = 0;
 
   constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) {
-    this.puntajesCollection = afs.collection<PeliculaI>(
+    this.actoresCollection = afs.collection<ActorI>(
       this.nameCollectionDB
     );
 
@@ -41,16 +43,16 @@ export class DBService {
     });
   }
 
-  loadAllPuntajes() {
-    return this.puntajesCollection.valueChanges().pipe(
-      map((puntajes: PeliculaI[]) => {
-        this.listaPuntajes = [];
+  loadAllActores() {
+    return this.actoresCollection.valueChanges().pipe(
+      map((actores: ActorI[]) => {
+        this.listaActores = [];
 
-        for (const score of puntajes) {
-          this.listaPuntajes.unshift(score);
+        for (const actor of actores) {
+          this.listaActores.push(actor);
         }
 
-        return this.listaPuntajes;
+        return this.listaActores;
       })
     );
   }
@@ -71,7 +73,7 @@ export class DBService {
     }
   } */
 
-  loadAllUsuarios() {
+/*   loadAllUsuarios() {
     return this.usuariosCollection.valueChanges().pipe(
       map((usuarios: UserI[]) => {
         this.listaUsuarios = [];
@@ -83,7 +85,24 @@ export class DBService {
         return this.listaUsuarios;
       })
     );
+  } */
+
+  async addActor(nombre: string, apellido:string, nacionalidad:string, edad: string) {
+    try {
+      const actor: ActorI = {
+        id: this.actorId,
+        nombre: nombre,
+        apellido: apellido,
+        nacionalidad: nacionalidad,
+        edad: edad
+      };
+      this.actorId++;
+      return await this.actoresCollection.add(actor);
+    } catch (error:any) {
+      throw new Error(error.message);
+    }
   }
+
 
   async addUserCollection(email: string, username:string, photoURL:string, puntaje: number) {
     try {

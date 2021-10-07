@@ -22,6 +22,8 @@ import { ActorListadoComponent } from './componentes/actor/actor-listado/actor-l
 import { PeliculaListadoComponent } from './componentes/peliculas/pelicula-listado/pelicula-listado.component';
 import { TablaPeliculaComponent } from './componentes/tabla-pelicula/tabla-pelicula.component';
 import { DetallePeliculaComponent } from './componentes/detalle-pelicula/detalle-pelicula.component';
+import { FormComponent } from './componentes/form/form.component';
+import { TablaPaisesComponent } from './componentes/tabla-paises/tabla-paises.component';
 
 
 
@@ -39,6 +41,8 @@ import { DetallePeliculaComponent } from './componentes/detalle-pelicula/detalle
     PeliculaListadoComponent,
     TablaPeliculaComponent,
     DetallePeliculaComponent,
+    FormComponent,
+    TablaPaisesComponent,
 
   ],
   imports: [
