@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 import { User } from 'firebase';
 import { ActorI } from '../clases/ActorI';
 import { ProductoI } from '../clases/ProductoI';
+import { ContainerI } from '../clases/ContainerI';
 
 
 @Injectable({
@@ -29,6 +30,9 @@ export class DBService {
 
   private productosCollection: AngularFirestoreCollection<ProductoI>;
   private nameCollection_productos = 'productos';
+
+  private containersCollection: AngularFirestoreCollection<ContainerI>;
+  private nameCollection_containers = 'containers';
 
   public currentUser!: UserI | null;
   public listaPuntajes: PeliculaI[] = [];
@@ -53,6 +57,11 @@ export class DBService {
     this.productosCollection = afs.collection<ProductoI>(
       this.nameCollection_productos
     );
+
+    this.containersCollection = afs.collection<ContainerI>(
+      this.nameCollection_containers
+    );
+
 
     this.afAuth.onAuthStateChanged((user) => {
       this.currentUser = user;
@@ -191,6 +200,8 @@ export class DBService {
     }
   }
 
+  
+
 
   async findMovies(actorId: string) {
     try {
@@ -210,7 +221,7 @@ export class DBService {
 
   
 
-/*   public obtenerUsuarios() {
+  public obtenerUsuarios() {
     return this.usuariosCollection.valueChanges() as Observable<UserI[]>;
-  } */
+  }
 }

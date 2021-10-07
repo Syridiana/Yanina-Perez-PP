@@ -6,6 +6,7 @@ import { BusquedaComponent } from './componentes/busqueda/busqueda.component';
 import { PeliculasModule } from './componentes/peliculas/peliculas.module';
 import { ActorModule } from './componentes/actor/actor.module';
 import { ActorAltaComponent } from './componentes/actor/actor-alta/actor-alta.component';
+import { PeliculaAltaComponent } from './componentes/peliculas/pelicula-alta/pelicula-alta.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'bievenido', component: BienvenidoComponent },
   { path: 'detalle', component: BusquedaComponent },
   { path: 'altaproducto', component: ActorAltaComponent },
+  { path: 'abmcontainer', component: PeliculaAltaComponent },
   { path: 'peliculas', loadChildren: () => import('./componentes/peliculas/peliculas.module').then(m => m.PeliculasModule) },
   { path: 'actor', loadChildren: () => import('./componentes/actor/actor.module').then(m => m.ActorModule) }
 ];
