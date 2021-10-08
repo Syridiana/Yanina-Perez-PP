@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
     }
 
     TestSignIn() {
-      this.authService.SignIn('kiki@mail.com', 'unotresdos');
+      this.authService.SignIn('yaninalperez@gmail.com', '123456');
       }
 
 }
