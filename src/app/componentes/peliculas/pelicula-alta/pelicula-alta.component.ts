@@ -44,8 +44,8 @@ export class PeliculaAltaComponent implements OnInit {
   }
 
   findUsuario(usuarioMail:any){
-    this.tipoUsuarioActual = this.listaUsuarios.find((res:any) => console.log(res + usuarioMail));
-
+    this.tipoUsuarioActual = this.listaUsuarios.find((res:any) => res.email == usuarioMail);
+    this.tipoUsuarioActual = this.tipoUsuarioActual.tipo;
   }
 
   ngOnInit(): void {

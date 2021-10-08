@@ -1,4 +1,4 @@
-<div class="container" *ngIf="currentUser">
+<div class="container" *ngIf="currentUser && tipoUsuarioActual === 'admin'">
     <main>
       <div class="py-5 text-center">
         <img class="d-block mx-auto mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
@@ -171,4 +171,4 @@
   
 
   </div>
-<h1 *ngIf="!currentUser">Debe estar logueado para ver esta pagina</h1>
+<h1 *ngIf="tipoUsuarioActual != 'admin'">Debe ser admin para ver esta pagina</h1>
